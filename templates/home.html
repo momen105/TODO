@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+
+    <style>
+        .title{
+            text-align: center;
+
+        }
+        .todosection{
+            display: flex;
+            padding: 30px;
+        }
+        .post-sec{
+            padding: 30px;
+            border-right: 1px solid black;
+        }
+        .get-sec{
+            padding: 30px;
+        }
+
+    </style>
+
+</head>
+<body>
+    
+    <h1 class="title">My ToDo List </h1>
+
+   <div class="todosection">
+    <div class="post-sec">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save</button>
+          </form>
+
+    </div>
+    <div class="get-sec">
+        {% for obj in todo %}
+        <p> id: {{obj.id}} Title : {{obj.title}}</p>
+    {%  endfor %}
+
+    </div>
+
+   </div>
+
+</body>
+</html>
